@@ -8,8 +8,8 @@ class CalculatriceTest {
     @Test
     public void shouldAdd() {
         String path = "src/main/java/org/example/numbers.csv";
-        Calculatrice calculatrice = new Calculatrice(path, "+", new AdapterCSV(), new AdapterPrint());
-        var result = calculatrice.calculate();
+        CalculatriceAdd calculatrice = new CalculatriceAdd(path, "+", new AdapterCSV(), new AdapterPrintForAdd());
+        var result = calculatrice.add();
 
         Assertions.assertEquals(result.get(0).toString(), "3");
         Assertions.assertEquals(result.get(1).toString(), "6");
@@ -20,8 +20,8 @@ class CalculatriceTest {
     @Test
     public void shouldMultipy() {
         String path = "src/main/java/org/example/numbers.csv";
-        Calculatrice calculatrice = new Calculatrice(path, "*", new AdapterCSV(), new AdapterPrint());
-        var result = calculatrice.calculate();
+        CalculatriceMultiply calculatrice = new CalculatriceMultiply(path, "*", new AdapterCSV(), new AdapterPrindForMultiply());
+        var result = calculatrice.multiply();
 
         Assertions.assertEquals(result.get(0).toString(), "2");
         Assertions.assertEquals(result.get(1).toString(), "6");
