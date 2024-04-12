@@ -5,19 +5,19 @@ import java.util.ArrayList;
 public class Calculatrice {
     private final String inputFilePath;
     private final String operation;
-    private final AdapterCSV adapterCSV;
-    private final AdapterPrint adapterPrint;
+    private final IGetNumbersFromFileUseCase iGetNumbersFromFileUseCase;
+    private final IPrintResult iPrintResult;
 
-
-    public Calculatrice(String inputFilePath, String operation, AdapterCSV adapterCSV, AdapterPrint adapterPrint) {
+    public Calculatrice(String inputFilePath, String operation, IGetNumbersFromFileUseCase iGetNumbersFromFileUseCase, IPrintResult iPrintResult) {
         this.inputFilePath = inputFilePath;
         this.operation = operation;
-        this.adapterCSV = adapterCSV;
-        this.adapterPrint = adapterPrint;
+        this.iGetNumbersFromFileUseCase = iGetNumbersFromFileUseCase;
+        this.iPrintResult = iPrintResult;
     }
 
+
     public ArrayList<Integer> calculate() {
-        var numbersFromFile = adapterCSV.getFileLines(inputFilePath);
+        var numbersFromFile = iGetNumbersFromFileUseCase.getFileLines(inputFilePath);
         ArrayList<Integer> result = new ArrayList<>();
 
         if(operation.equals("+")) {
@@ -31,7 +31,7 @@ public class Calculatrice {
             }
         }
 
-        adapterPrint.printResult(operation, numbersFromFile, result);
+        iPrintResult.printResult(operation, numbersFromFile, result);
 
         return result;
     }
