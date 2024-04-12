@@ -24,14 +24,14 @@ public class Calculatrice {
             for(int i=1; i<numbersFromFile.size(); i++) {
                 result.add(addFromZeroToN(i, numbersFromFile));
             }
+            iPrintResult.printResultForAdd(operation, numbersFromFile, result);
         }
         if(operation.equals("*")) {
             for(int i=1; i<numbersFromFile.size(); i++) {
                 result.add(multiplyFromZeroToN(i, numbersFromFile));
             }
+            iPrintResult.printResultForMultiply(operation, numbersFromFile, result);
         }
-
-        iPrintResult.printResult(operation, numbersFromFile, result);
 
         return result;
     }
